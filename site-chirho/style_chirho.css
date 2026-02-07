@@ -50,6 +50,21 @@ body {
   z-index: 10;
 }
 
+.sidebar-home-chirho {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0 0 0.6rem;
+  border-bottom: 1px solid #333;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.sidebar-home-chirho:hover {
+  opacity: 0.8;
+}
+
 .sidebar-title-chirho {
   font-size: 1.2rem;
   padding: 0 1rem;
@@ -60,7 +75,6 @@ body {
   font-size: 0.75rem;
   padding: 0 1rem;
   color: #999;
-  margin-bottom: 0.8rem;
 }
 
 .stats-bar-chirho {
@@ -69,6 +83,21 @@ body {
   border-bottom: 1px solid #333;
   margin-bottom: 0.5rem;
   line-height: 1.6;
+}
+
+.sidebar-pdf-chirho {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: #7c8cf8;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  margin-bottom: 0.5rem;
+  transition: background 0.15s;
+}
+
+.sidebar-pdf-chirho:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .book-list-chirho {
@@ -113,43 +142,10 @@ body {
   flex-wrap: wrap;
 }
 
-.home-link-chirho {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #7c8cf8;
-  text-decoration: none;
-  white-space: nowrap;
-  padding: 0.2rem 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: background 0.15s;
-}
-
-.home-link-chirho:hover {
-  background: #f0f0f0;
-}
-
 #chapter-title-chirho {
   font-size: 1.1rem;
   font-weight: 600;
   white-space: nowrap;
-}
-
-.pdf-link-chirho {
-  margin-left: auto;
-  font-size: 0.8rem;
-  color: #555;
-  text-decoration: none;
-  padding: 0.25rem 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: background 0.15s;
-}
-
-.pdf-link-chirho:hover {
-  background: #e8e8e8;
-  color: #222;
 }
 
 .chapter-nav-chirho {
@@ -234,11 +230,6 @@ body {
   margin-top: 3rem;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
-}
-
-.verse-chirho {
-  margin-bottom: 0.3rem;
-  display: inline;
 }
 
 .verse-num-chirho {
