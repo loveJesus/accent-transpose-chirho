@@ -2,6 +2,8 @@
 // that whoever believes in him should not perish but have eternal life.
 
 mod db_chirho;
+mod export_chirho;
+mod export_pdf_chirho;
 mod hebrew_chirho;
 mod import_mapm_chirho;
 mod import_solid_rock_chirho;
@@ -36,9 +38,13 @@ enum CommandsChirho {
     #[command(name = "report-chirho")]
     ReportChirho,
 
-    /// Export cantillated text
+    /// Export cantillated text as JSON
     #[command(name = "export-chirho")]
     ExportChirho,
+
+    /// Export cantillated text as PDF via Typst
+    #[command(name = "export-pdf-chirho")]
+    ExportPdfChirho,
 }
 
 fn main() -> ResultChirho<()> {
@@ -66,7 +72,12 @@ fn main() -> ResultChirho<()> {
             println!("Report not yet implemented.");
         }
         CommandsChirho::ExportChirho => {
-            println!("Export not yet implemented.");
+            println!("Exporting cantillated text as JSON...");
+            export_chirho::export_chirho(&conn_chirho)?;
+        }
+        CommandsChirho::ExportPdfChirho => {
+            println!("Exporting cantillated text as PDF...");
+            export_pdf_chirho::export_pdf_chirho()?;
         }
     }
 

@@ -31,6 +31,14 @@ MapM.zip
 *.pyc
 __pycache__/
 
+# Export outputs (large generated files)
+export-chirho/json-chirho/
+export-chirho/bible_chirho.typ
+export-chirho/bible_chirho.pdf
+site-chirho/data-chirho/
+
+# Font copied from submodule (binary)
+site-chirho/fonts/
 
 # Added by cargo
 

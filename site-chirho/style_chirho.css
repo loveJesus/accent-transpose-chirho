@@ -1,0 +1,300 @@
+/* For God so loved the world that he gave his only begotten Son,
+   that whoever believes in him should not perish but have eternal life. */
+
+@font-face {
+  font-family: 'Keter YG';
+  src: url('fonts/KeterYG-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-unmodified-chirho: #2e7d32;
+  --color-mismatch-chirho: #e65100;
+  --color-not-present-chirho: #c62828;
+  --sidebar-width-chirho: 260px;
+  --bg-chirho: #fafaf8;
+  --sidebar-bg-chirho: #1a1a2e;
+  --sidebar-text-chirho: #e0e0e0;
+  --sidebar-active-chirho: #3a3a5e;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg-chirho);
+  color: #222;
+  display: flex;
+  min-height: 100vh;
+  direction: ltr;
+}
+
+/* Sidebar */
+#sidebar-chirho {
+  width: var(--sidebar-width-chirho);
+  min-width: var(--sidebar-width-chirho);
+  background: var(--sidebar-bg-chirho);
+  color: var(--sidebar-text-chirho);
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 1rem 0;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.sidebar-title-chirho {
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.sidebar-subtitle-chirho {
+  font-size: 0.75rem;
+  padding: 0 1rem;
+  color: #999;
+  margin-bottom: 0.8rem;
+}
+
+.stats-bar-chirho {
+  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  border-bottom: 1px solid #333;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.book-list-chirho {
+  list-style: none;
+}
+
+.book-item-chirho {
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.book-item-chirho:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.book-item-chirho.active-chirho {
+  background: var(--sidebar-active-chirho);
+  border-left-color: #7c8cf8;
+}
+
+/* Main content */
+#main-chirho {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#header-chirho {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 0.8rem 1.5rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#chapter-title-chirho {
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chapter-nav-chirho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.chapter-btn-chirho {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  min-width: 2rem;
+  text-align: center;
+  transition: background 0.15s;
+}
+
+.chapter-btn-chirho:hover {
+  background: #e8e8e8;
+}
+
+.chapter-btn-chirho.active-chirho {
+  background: #3a3a5e;
+  color: #fff;
+  border-color: #3a3a5e;
+}
+
+.menu-toggle-chirho {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+/* Legend */
+.legend-chirho {
+  padding: 0.4rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.8rem;
+}
+
+.legend-item-chirho {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.dot-chirho {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-unmodified-chirho { background: var(--color-unmodified-chirho); }
+.dot-mismatch-chirho { background: var(--color-mismatch-chirho); }
+.dot-not-present-chirho { background: var(--color-not-present-chirho); }
+
+/* Text area */
+.text-area-chirho {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  direction: rtl;
+  font-family: 'Keter YG', 'SBL Hebrew', 'Ezra SIL', serif;
+  font-size: 1.4rem;
+  line-height: 2.2;
+}
+
+.placeholder-chirho {
+  color: #999;
+  text-align: center;
+  direction: ltr;
+  margin-top: 3rem;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+.verse-chirho {
+  margin-bottom: 0.3rem;
+  display: inline;
+}
+
+.verse-num-chirho {
+  font-size: 0.65em;
+  color: #999;
+  vertical-align: super;
+  font-family: system-ui, sans-serif;
+  margin-inline-start: 0.3em;
+  cursor: default;
+}
+
+.word-chirho {
+  cursor: pointer;
+  padding: 0.05em 0.1em;
+  border-radius: 2px;
+  transition: background 0.15s;
+  display: inline;
+  unicode-bidi: embed;
+}
+
+.word-chirho:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.word-unmodified-chirho { color: var(--color-unmodified-chirho); }
+.word-mismatch-chirho { color: var(--color-mismatch-chirho); }
+.word-not-present-chirho { color: var(--color-not-present-chirho); }
+
+/* Tooltip */
+.tooltip-chirho {
+  position: fixed;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: system-ui, sans-serif;
+  direction: ltr;
+  text-align: left;
+  max-width: 360px;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
+}
+
+.tooltip-chirho .tip-label-chirho {
+  color: #999;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tooltip-chirho .tip-hebrew-chirho {
+  font-family: 'Keter YG', serif;
+  font-size: 1.1rem;
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+.chapter-stats-chirho {
+  font-size: 0.75rem;
+  color: #888;
+  padding: 0.3rem 1.5rem;
+  font-family: system-ui, sans-serif;
+  direction: ltr;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #sidebar-chirho {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+  }
+
+  #sidebar-chirho.open-chirho {
+    transform: translateX(0);
+  }
+
+  .menu-toggle-chirho {
+    display: block;
+  }
+
+  .text-area-chirho {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+  For God so loved the world that he gave his only begotten Son,
+  that whoever believes in him should not perish but have eternal life.
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hebrew Bible — Cantillated (Aleppo → Leningrad)</title>
+  <link rel="stylesheet" href="style_chirho.css">
+</head>
+<body>
+  <nav id="sidebar-chirho">
+    <h1 class="sidebar-title-chirho">Hebrew Bible</h1>
+    <p class="sidebar-subtitle-chirho">Aleppo → Leningrad</p>
+    <div id="stats-bar-chirho" class="stats-bar-chirho"></div>
+    <div id="book-list-chirho" class="book-list-chirho"></div>
+  </nav>
+
+  <main id="main-chirho">
+    <header id="header-chirho">
+      <button id="menu-toggle-chirho" class="menu-toggle-chirho" aria-label="Toggle menu">☰</button>
+      <h2 id="chapter-title-chirho">Select a book to begin</h2>
+      <div id="chapter-nav-chirho" class="chapter-nav-chirho"></div>
+    </header>
+
+    <div id="legend-chirho" class="legend-chirho">
+      <span class="legend-item-chirho"><span class="dot-chirho dot-unmodified-chirho"></span> Matched</span>
+      <span class="legend-item-chirho"><span class="dot-chirho dot-mismatch-chirho"></span> Mismatch</span>
+      <span class="legend-item-chirho"><span class="dot-chirho dot-not-present-chirho"></span> Not in MapM</span>
+    </div>
+
+    <section id="text-area-chirho" class="text-area-chirho">
+      <p class="placeholder-chirho">Select a book and chapter from the sidebar to view the cantillated Hebrew text.</p>
+    </section>
+  </main>
+
+  <div id="tooltip-chirho" class="tooltip-chirho" style="display:none;"></div>
+
+  <script src="app_chirho.js"></script>
+</body>
+</html>
