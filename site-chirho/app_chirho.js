@@ -9,86 +9,87 @@
 
   var manifestChirho = null;
   var renderCancelChirho = null;
+  var loadGenChirho = 0;
 
-  var bookListEl = document.getElementById("book-list-chirho");
-  var chapterTitleEl = document.getElementById("chapter-title-chirho");
-  var chapterNavEl = document.getElementById("chapter-nav-chirho");
-  var textAreaEl = document.getElementById("text-area-chirho");
-  var tooltipEl = document.getElementById("tooltip-chirho");
-  var statsBarEl = document.getElementById("stats-bar-chirho");
-  var menuToggleEl = document.getElementById("menu-toggle-chirho");
-  var sidebarEl = document.getElementById("sidebar-chirho");
-  var homeLinkEl = document.getElementById("home-link-chirho");
+  var bookListElChirho = document.getElementById("book-list-chirho");
+  var chapterTitleElChirho = document.getElementById("chapter-title-chirho");
+  var chapterNavElChirho = document.getElementById("chapter-nav-chirho");
+  var textAreaElChirho = document.getElementById("text-area-chirho");
+  var tooltipElChirho = document.getElementById("tooltip-chirho");
+  var statsBarElChirho = document.getElementById("stats-bar-chirho");
+  var menuToggleElChirho = document.getElementById("menu-toggle-chirho");
+  var sidebarElChirho = document.getElementById("sidebar-chirho");
+  var homeLinkElChirho = document.getElementById("home-link-chirho");
 
-  menuToggleEl.addEventListener("click", function () {
-    sidebarEl.classList.toggle("open-chirho");
+  menuToggleElChirho.addEventListener("click", function () {
+    sidebarElChirho.classList.toggle("open-chirho");
   });
 
   // Sidebar title goes home
-  homeLinkEl.addEventListener("click", function (e) {
-    e.preventDefault();
+  homeLinkElChirho.addEventListener("click", function (eChirho) {
+    eChirho.preventDefault();
     cancelRenderChirho();
-    chapterTitleEl.textContent = "";
-    chapterNavEl.textContent = "";
+    chapterTitleElChirho.textContent = "";
+    chapterNavElChirho.textContent = "";
     window.location.hash = "";
-    document.querySelectorAll(".book-item-chirho").forEach(function (el) {
-      el.classList.remove("active-chirho");
+    document.querySelectorAll(".book-item-chirho").forEach(function (elChirho) {
+      elChirho.classList.remove("active-chirho");
     });
     showFrontPageChirho();
-    sidebarEl.classList.remove("open-chirho");
+    sidebarElChirho.classList.remove("open-chirho");
   });
 
   function cancelRenderChirho() {
     if (renderCancelChirho) {
-      renderCancelChirho.cancelled = true;
+      renderCancelChirho.cancelledChirho = true;
       renderCancelChirho = null;
     }
   }
 
   function showFrontPageChirho() {
-    textAreaEl.textContent = "";
-    var div = document.createElement("div");
-    div.className = "placeholder-chirho";
+    textAreaElChirho.textContent = "";
+    var divChirho = document.createElement("div");
+    divChirho.className = "placeholder-chirho";
 
-    var p1 = document.createElement("p");
-    var strong1 = document.createElement("strong");
-    strong1.textContent = "Mikra according to the Masorah";
-    var strong2 = document.createElement("strong");
-    strong2.textContent = "Solid Rock Hebrew Bible";
-    p1.appendChild(document.createTextNode("Cantillation accents (te\u2019amim) from the "));
-    p1.appendChild(strong1);
-    p1.appendChild(document.createTextNode(" (MapM, based on the Aleppo Codex) transposed onto the "));
-    p1.appendChild(strong2);
-    p1.appendChild(document.createTextNode(" (based on the Leningrad Codex)."));
-    div.appendChild(p1);
+    var p1Chirho = document.createElement("p");
+    var strong1Chirho = document.createElement("strong");
+    strong1Chirho.textContent = "Mikra according to the Masorah";
+    var strong2Chirho = document.createElement("strong");
+    strong2Chirho.textContent = "Solid Rock Hebrew Bible";
+    p1Chirho.appendChild(document.createTextNode("Cantillation accents (te\u2019amim) from the "));
+    p1Chirho.appendChild(strong1Chirho);
+    p1Chirho.appendChild(document.createTextNode(" (MapM, based on the Aleppo Codex) transposed onto the "));
+    p1Chirho.appendChild(strong2Chirho);
+    p1Chirho.appendChild(document.createTextNode(" (based on the Leningrad Codex)."));
+    divChirho.appendChild(p1Chirho);
 
-    var p2 = document.createElement("p");
-    p2.style.marginTop = "0.8rem";
-    p2.textContent = "The Solid Rock Hebrew Bible is a TEI XML critical edition of the Leningrad Codex. MapM preserves the cantillation tradition of the Aleppo Codex. This viewer shows each word color-coded by how well the two traditions align.";
-    div.appendChild(p2);
+    var p2Chirho = document.createElement("p");
+    p2Chirho.style.marginTop = "0.8rem";
+    p2Chirho.textContent = "The Solid Rock Hebrew Bible is a TEI XML critical edition of the Leningrad Codex. MapM preserves the cantillation tradition of the Aleppo Codex. This viewer shows each word color-coded by how well the two traditions align.";
+    divChirho.appendChild(p2Chirho);
 
-    var p3 = document.createElement("p");
-    p3.style.marginTop = "0.8rem";
-    p3.textContent = "Select a book and chapter from the sidebar to begin.";
-    div.appendChild(p3);
+    var p3Chirho = document.createElement("p");
+    p3Chirho.style.marginTop = "0.8rem";
+    p3Chirho.textContent = "Select a book and chapter from the sidebar to begin.";
+    divChirho.appendChild(p3Chirho);
 
-    var p4 = document.createElement("p");
-    p4.style.marginTop = "1.2rem";
-    var ghLink = document.createElement("a");
-    ghLink.href = "https://github.com/loveJesus/accent-transpose-chirho";
-    ghLink.target = "_blank";
-    ghLink.rel = "noopener";
-    ghLink.style.color = "#7c8cf8";
-    ghLink.textContent = "GitHub: loveJesus/accent-transpose-chirho";
-    p4.appendChild(ghLink);
-    div.appendChild(p4);
+    var p4Chirho = document.createElement("p");
+    p4Chirho.style.marginTop = "1.2rem";
+    var ghLinkChirho = document.createElement("a");
+    ghLinkChirho.href = "https://github.com/loveJesus/accent-transpose-chirho";
+    ghLinkChirho.target = "_blank";
+    ghLinkChirho.rel = "noopener";
+    ghLinkChirho.style.color = "#7c8cf8";
+    ghLinkChirho.textContent = "GitHub: loveJesus/accent-transpose-chirho";
+    p4Chirho.appendChild(ghLinkChirho);
+    divChirho.appendChild(p4Chirho);
 
-    textAreaEl.appendChild(div);
+    textAreaElChirho.appendChild(divChirho);
   }
 
   async function loadManifestChirho() {
-    var resp = await fetch(DATA_DIR_CHIRHO + "/manifest_chirho.json");
-    manifestChirho = await resp.json();
+    var respChirho = await fetch(DATA_DIR_CHIRHO + "/manifest_chirho.json");
+    manifestChirho = await respChirho.json();
     renderStatsChirho(manifestChirho.total_stats_chirho);
     renderBookListChirho();
 
@@ -99,98 +100,102 @@
     }
   }
 
-  function renderStatsChirho(stats) {
-    statsBarEl.textContent = "";
-    var strong = document.createElement("strong");
-    strong.textContent = stats.total.toLocaleString();
-    statsBarEl.appendChild(strong);
-    statsBarEl.appendChild(document.createTextNode(" words"));
-    statsBarEl.appendChild(document.createElement("br"));
+  function renderStatsChirho(statsChirho) {
+    statsBarElChirho.textContent = "";
+    var strongChirho = document.createElement("strong");
+    strongChirho.textContent = statsChirho.total.toLocaleString();
+    statsBarElChirho.appendChild(strongChirho);
+    statsBarElChirho.appendChild(document.createTextNode(" words"));
+    statsBarElChirho.appendChild(document.createElement("br"));
 
-    var pct = function (n) {
-      return ((n / stats.total) * 100).toFixed(1);
+    var pctChirho = function (nChirho) {
+      return ((nChirho / statsChirho.total) * 100).toFixed(1);
     };
 
-    var matchedSpan = document.createElement("span");
-    matchedSpan.style.color = "#2e7d32";
-    matchedSpan.textContent = pct(stats.unmodified) + "% matched";
-    statsBarEl.appendChild(matchedSpan);
-    statsBarEl.appendChild(document.createTextNode(" \u00b7 "));
+    var matchedSpanChirho = document.createElement("span");
+    matchedSpanChirho.style.color = "#2e7d32";
+    matchedSpanChirho.textContent = pctChirho(statsChirho.unmodified) + "% matched";
+    statsBarElChirho.appendChild(matchedSpanChirho);
+    statsBarElChirho.appendChild(document.createTextNode(" \u00b7 "));
 
-    var mismatchSpan = document.createElement("span");
-    mismatchSpan.style.color = "#e65100";
-    mismatchSpan.textContent = pct(stats.mismatch) + "% mismatch";
-    statsBarEl.appendChild(mismatchSpan);
-    statsBarEl.appendChild(document.createTextNode(" \u00b7 "));
+    var mismatchSpanChirho = document.createElement("span");
+    mismatchSpanChirho.style.color = "#e65100";
+    mismatchSpanChirho.textContent = pctChirho(statsChirho.mismatch) + "% mismatch";
+    statsBarElChirho.appendChild(mismatchSpanChirho);
+    statsBarElChirho.appendChild(document.createTextNode(" \u00b7 "));
 
-    var missingSpan = document.createElement("span");
-    missingSpan.style.color = "#c62828";
-    missingSpan.textContent = pct(stats.not_present) + "% missing";
-    statsBarEl.appendChild(missingSpan);
+    var missingSpanChirho = document.createElement("span");
+    missingSpanChirho.style.color = "#c62828";
+    missingSpanChirho.textContent = pctChirho(statsChirho.not_present) + "% missing";
+    statsBarElChirho.appendChild(missingSpanChirho);
   }
 
   function renderBookListChirho() {
-    bookListEl.textContent = "";
-    manifestChirho.books_chirho.forEach(function (book) {
-      var div = document.createElement("div");
-      div.className = "book-item-chirho";
-      div.textContent = book.book_name_chirho;
-      div.dataset.bookNum = book.book_num_chirho;
-      div.addEventListener("click", function () {
-        selectBookChirho(book);
+    bookListElChirho.textContent = "";
+    manifestChirho.books_chirho.forEach(function (bookChirho) {
+      var divChirho = document.createElement("div");
+      divChirho.className = "book-item-chirho";
+      divChirho.textContent = bookChirho.book_name_chirho;
+      divChirho.dataset.bookNum = bookChirho.book_num_chirho;
+      divChirho.addEventListener("click", function () {
+        selectBookChirho(bookChirho);
       });
-      bookListEl.appendChild(div);
+      bookListElChirho.appendChild(divChirho);
     });
   }
 
-  function selectBookChirho(book) {
-    document.querySelectorAll(".book-item-chirho").forEach(function (el) {
-      el.classList.toggle(
+  function selectBookChirho(bookChirho) {
+    document.querySelectorAll(".book-item-chirho").forEach(function (elChirho) {
+      elChirho.classList.toggle(
         "active-chirho",
-        parseInt(el.dataset.bookNum) === book.book_num_chirho
+        parseInt(elChirho.dataset.bookNum) === bookChirho.book_num_chirho
       );
     });
 
-    chapterNavEl.textContent = "";
-    book.chapters_chirho.forEach(function (ch) {
-      var btn = document.createElement("button");
-      btn.className = "chapter-btn-chirho";
-      btn.textContent = ch.chapter_chirho;
-      btn.addEventListener("click", function () {
-        loadChapterChirho(book, ch);
+    chapterNavElChirho.textContent = "";
+    bookChirho.chapters_chirho.forEach(function (chChirho) {
+      var btnChirho = document.createElement("button");
+      btnChirho.className = "chapter-btn-chirho";
+      btnChirho.textContent = chChirho.chapter_chirho;
+      btnChirho.addEventListener("click", function () {
+        loadChapterChirho(bookChirho, chChirho);
       });
-      chapterNavEl.appendChild(btn);
+      chapterNavElChirho.appendChild(btnChirho);
     });
 
-    if (book.chapters_chirho.length > 0) {
-      loadChapterChirho(book, book.chapters_chirho[0]);
+    if (bookChirho.chapters_chirho.length > 0) {
+      loadChapterChirho(bookChirho, bookChirho.chapters_chirho[0]);
     }
 
-    sidebarEl.classList.remove("open-chirho");
+    sidebarElChirho.classList.remove("open-chirho");
   }
 
-  async function loadChapterChirho(book, ch) {
+  async function loadChapterChirho(bookChirho, chChirho) {
     cancelRenderChirho();
-    chapterTitleEl.textContent = book.book_name_chirho + " " + ch.chapter_chirho;
-    window.location.hash = book.book_num_chirho + ":" + ch.chapter_chirho;
+    var genChirho = ++loadGenChirho;
 
-    document.querySelectorAll(".chapter-btn-chirho").forEach(function (btn) {
-      btn.classList.toggle(
+    chapterTitleElChirho.textContent = bookChirho.book_name_chirho + " " + chChirho.chapter_chirho;
+    window.location.hash = bookChirho.book_num_chirho + ":" + chChirho.chapter_chirho;
+
+    document.querySelectorAll(".chapter-btn-chirho").forEach(function (btnChirho) {
+      btnChirho.classList.toggle(
         "active-chirho",
-        parseInt(btn.textContent) === ch.chapter_chirho
+        parseInt(btnChirho.textContent) === chChirho.chapter_chirho
       );
     });
 
-    textAreaEl.textContent = "";
-    var loadingP = document.createElement("p");
-    loadingP.className = "placeholder-chirho";
-    loadingP.textContent = "Loading...";
-    textAreaEl.appendChild(loadingP);
+    textAreaElChirho.textContent = "";
+    var loadingPChirho = document.createElement("p");
+    loadingPChirho.className = "placeholder-chirho";
+    loadingPChirho.textContent = "Loading...";
+    textAreaElChirho.appendChild(loadingPChirho);
 
-    var resp = await fetch(DATA_DIR_CHIRHO + "/" + ch.file_chirho);
-    var data = await resp.json();
+    var respChirho = await fetch(DATA_DIR_CHIRHO + "/" + chChirho.file_chirho);
+    if (genChirho !== loadGenChirho) return;
+    var dataChirho = await respChirho.json();
+    if (genChirho !== loadGenChirho) return;
 
-    renderChapterChunkedChirho(data);
+    renderChapterChunkedChirho(dataChirho);
   }
 
   var STATUS_CLASSES_CHIRHO = {
@@ -201,74 +206,74 @@
   };
 
   // Render a single verse into a DocumentFragment
-  function renderVerseChirho(verse) {
-    var frag = document.createDocumentFragment();
-    var numSpan = document.createElement("span");
-    numSpan.className = "verse-num-chirho";
-    numSpan.textContent = verse.verse_chirho;
-    frag.appendChild(numSpan);
+  function renderVerseChirho(verseChirho) {
+    var fragChirho = document.createDocumentFragment();
+    var numSpanChirho = document.createElement("span");
+    numSpanChirho.className = "verse-num-chirho";
+    numSpanChirho.textContent = verseChirho.verse_chirho;
+    fragChirho.appendChild(numSpanChirho);
 
-    for (var i = 0; i < verse.words_chirho.length; i++) {
-      var word = verse.words_chirho[i];
-      var span = document.createElement("span");
-      span.className = "word-chirho " + (STATUS_CLASSES_CHIRHO[word.status_chirho] || "word-not-present-chirho");
-      span.textContent = word.result_chirho;
-      span.dataset.o = word.sr_original_chirho;
-      span.dataset.r = word.result_chirho;
-      span.dataset.s = word.status_chirho;
-      span.dataset.c = word.confidence_chirho;
-      if (word.notes_chirho) {
-        span.dataset.n = word.notes_chirho;
+    for (var iChirho = 0; iChirho < verseChirho.words_chirho.length; iChirho++) {
+      var wordChirho = verseChirho.words_chirho[iChirho];
+      var spanChirho = document.createElement("span");
+      spanChirho.className = "word-chirho " + (STATUS_CLASSES_CHIRHO[wordChirho.status_chirho] || "word-not-present-chirho");
+      spanChirho.textContent = wordChirho.result_chirho;
+      spanChirho.dataset.o = wordChirho.sr_original_chirho;
+      spanChirho.dataset.r = wordChirho.result_chirho;
+      spanChirho.dataset.s = wordChirho.status_chirho;
+      spanChirho.dataset.c = wordChirho.confidence_chirho;
+      if (wordChirho.notes_chirho) {
+        spanChirho.dataset.n = wordChirho.notes_chirho;
       }
-      frag.appendChild(document.createTextNode(" "));
-      frag.appendChild(span);
+      fragChirho.appendChild(document.createTextNode(" "));
+      fragChirho.appendChild(spanChirho);
     }
 
-    frag.appendChild(document.createTextNode(" "));
-    return frag;
+    fragChirho.appendChild(document.createTextNode(" "));
+    return fragChirho;
   }
 
   // Chunked rendering: render VERSES_PER_CHUNK_CHIRHO verses per animation frame
-  function renderChapterChunkedChirho(data) {
+  function renderChapterChunkedChirho(dataChirho) {
     cancelRenderChirho();
-    textAreaEl.textContent = "";
+    textAreaElChirho.textContent = "";
 
     // Stats bar
-    var statsDiv = document.createElement("div");
-    statsDiv.className = "chapter-stats-chirho";
-    statsDiv.textContent =
-      data.stats_chirho.total + " words: " +
-      data.stats_chirho.unmodified + " matched, " +
-      data.stats_chirho.mismatch + " mismatch, " +
-      data.stats_chirho.not_present + " missing";
-    textAreaEl.appendChild(statsDiv);
+    var statsDivChirho = document.createElement("div");
+    statsDivChirho.className = "chapter-stats-chirho";
+    statsDivChirho.textContent =
+      dataChirho.stats_chirho.total + " words: " +
+      dataChirho.stats_chirho.unmodified + " matched, " +
+      dataChirho.stats_chirho.mismatch + " mismatch, " +
+      dataChirho.stats_chirho.not_present + " missing";
+    textAreaElChirho.appendChild(statsDivChirho);
 
-    var container = document.createElement("div");
-    container.style.marginTop = "1rem";
-    textAreaEl.appendChild(container);
+    var containerChirho = document.createElement("div");
+    containerChirho.style.marginTop = "1rem";
+    textAreaElChirho.appendChild(containerChirho);
 
     // Event delegation on container
-    container.addEventListener("mouseenter", handleWordHoverChirho, true);
-    container.addEventListener("mouseleave", handleWordLeaveChirho, true);
-    container.addEventListener("click", handleWordClickChirho, true);
+    containerChirho.addEventListener("mouseenter", handleWordHoverChirho, true);
+    containerChirho.addEventListener("mouseleave", handleWordLeaveChirho, true);
+    containerChirho.addEventListener("click", handleWordClickChirho, true);
 
-    var verses = data.verses_chirho;
-    var idx = 0;
-    var token = { cancelled: false };
-    renderCancelChirho = token;
+    var versesChirho = dataChirho.verses_chirho;
+    var idxChirho = 0;
+    var tokenChirho = { cancelledChirho: false };
+    renderCancelChirho = tokenChirho;
 
     function renderNextChunkChirho() {
-      if (token.cancelled) return;
+      if (tokenChirho.cancelledChirho) return;
 
-      var end = Math.min(idx + VERSES_PER_CHUNK_CHIRHO, verses.length);
-      var frag = document.createDocumentFragment();
-      while (idx < end) {
-        frag.appendChild(renderVerseChirho(verses[idx]));
-        idx++;
+      var endChirho = Math.min(idxChirho + VERSES_PER_CHUNK_CHIRHO, versesChirho.length);
+      var fragChirho = document.createDocumentFragment();
+      while (idxChirho < endChirho) {
+        fragChirho.appendChild(renderVerseChirho(versesChirho[idxChirho]));
+        idxChirho++;
       }
-      container.appendChild(frag);
+      containerChirho.appendChild(fragChirho);
 
-      if (idx < verses.length) {
+      if (idxChirho < versesChirho.length) {
         requestAnimationFrame(renderNextChunkChirho);
       } else {
         renderCancelChirho = null;
@@ -278,24 +283,24 @@
     requestAnimationFrame(renderNextChunkChirho);
   }
 
-  function handleWordHoverChirho(e) {
-    if (e.target.classList.contains("word-chirho")) {
-      showTooltipChirho(e.target, e);
+  function handleWordHoverChirho(eChirho) {
+    if (eChirho.target.classList.contains("word-chirho")) {
+      showTooltipChirho(eChirho.target, eChirho);
     }
   }
 
-  function handleWordLeaveChirho(e) {
-    if (e.target.classList.contains("word-chirho")) {
+  function handleWordLeaveChirho(eChirho) {
+    if (eChirho.target.classList.contains("word-chirho")) {
       hideTooltipChirho();
     }
   }
 
-  function handleWordClickChirho(e) {
-    if (e.target.classList.contains("word-chirho")) {
-      if (tooltipEl.style.display === "block") {
+  function handleWordClickChirho(eChirho) {
+    if (eChirho.target.classList.contains("word-chirho")) {
+      if (tooltipElChirho.style.display === "block") {
         hideTooltipChirho();
       } else {
-        showTooltipChirho(e.target, e);
+        showTooltipChirho(eChirho.target, eChirho);
       }
     }
   }
@@ -307,66 +312,66 @@
     not_present_in_mapm: "Not in MapM"
   };
 
-  function showTooltipChirho(el, e) {
-    tooltipEl.textContent = "";
-    appendTooltipRowChirho("Status", (STATUS_LABELS_CHIRHO[el.dataset.s] || el.dataset.s) + " (confidence: " + el.dataset.c + ")", false);
-    appendTooltipRowChirho("SR Original", el.dataset.o, true);
-    appendTooltipRowChirho("Result", el.dataset.r, true);
-    if (el.dataset.n) {
-      appendTooltipRowChirho("Notes", el.dataset.n, false);
+  function showTooltipChirho(elChirho, eChirho) {
+    tooltipElChirho.textContent = "";
+    appendTooltipRowChirho("Status", (STATUS_LABELS_CHIRHO[elChirho.dataset.s] || elChirho.dataset.s) + " (confidence: " + elChirho.dataset.c + ")", false);
+    appendTooltipRowChirho("SR Original", elChirho.dataset.o, true);
+    appendTooltipRowChirho("Result", elChirho.dataset.r, true);
+    if (elChirho.dataset.n) {
+      appendTooltipRowChirho("Notes", elChirho.dataset.n, false);
     }
-    tooltipEl.style.display = "block";
-    positionTooltipChirho(e);
+    tooltipElChirho.style.display = "block";
+    positionTooltipChirho(eChirho);
   }
 
-  function appendTooltipRowChirho(label, value, isHebrew) {
-    var labelDiv = document.createElement("div");
-    labelDiv.className = "tip-label-chirho";
-    if (tooltipEl.children.length > 0) {
-      labelDiv.style.marginTop = "0.4rem";
+  function appendTooltipRowChirho(labelChirho, valueChirho, isHebrewChirho) {
+    var labelDivChirho = document.createElement("div");
+    labelDivChirho.className = "tip-label-chirho";
+    if (tooltipElChirho.children.length > 0) {
+      labelDivChirho.style.marginTop = "0.4rem";
     }
-    labelDiv.textContent = label;
-    tooltipEl.appendChild(labelDiv);
+    labelDivChirho.textContent = labelChirho;
+    tooltipElChirho.appendChild(labelDivChirho);
 
-    var valueDiv = document.createElement("div");
-    if (isHebrew) {
-      valueDiv.className = "tip-hebrew-chirho";
+    var valueDivChirho = document.createElement("div");
+    if (isHebrewChirho) {
+      valueDivChirho.className = "tip-hebrew-chirho";
     }
-    valueDiv.textContent = value;
-    tooltipEl.appendChild(valueDiv);
+    valueDivChirho.textContent = valueChirho;
+    tooltipElChirho.appendChild(valueDivChirho);
   }
 
-  function positionTooltipChirho(e) {
-    var x = e.clientX + 12;
-    var y = e.clientY + 12;
-    var w = tooltipEl.offsetWidth;
-    var h = tooltipEl.offsetHeight;
-    if (x + w > window.innerWidth - 10) x = e.clientX - w - 12;
-    if (y + h > window.innerHeight - 10) y = e.clientY - h - 12;
-    tooltipEl.style.left = x + "px";
-    tooltipEl.style.top = y + "px";
+  function positionTooltipChirho(eChirho) {
+    var xChirho = eChirho.clientX + 12;
+    var yChirho = eChirho.clientY + 12;
+    var wChirho = tooltipElChirho.offsetWidth;
+    var hChirho = tooltipElChirho.offsetHeight;
+    if (xChirho + wChirho > window.innerWidth - 10) xChirho = eChirho.clientX - wChirho - 12;
+    if (yChirho + hChirho > window.innerHeight - 10) yChirho = eChirho.clientY - hChirho - 12;
+    tooltipElChirho.style.left = xChirho + "px";
+    tooltipElChirho.style.top = yChirho + "px";
   }
 
   function hideTooltipChirho() {
-    tooltipEl.style.display = "none";
+    tooltipElChirho.style.display = "none";
   }
 
   function parseHashChirho() {
-    var hash = window.location.hash.slice(1);
-    var parts = hash.split(":");
-    if (parts.length === 2) {
-      var bookNum = parseInt(parts[0]);
-      var chapterNum = parseInt(parts[1]);
-      var book = manifestChirho.books_chirho.find(function (b) {
-        return b.book_num_chirho === bookNum;
+    var hashChirho = window.location.hash.slice(1);
+    var partsChirho = hashChirho.split(":");
+    if (partsChirho.length === 2) {
+      var bookNumChirho = parseInt(partsChirho[0]);
+      var chapterNumChirho = parseInt(partsChirho[1]);
+      var bookChirho = manifestChirho.books_chirho.find(function (bChirho) {
+        return bChirho.book_num_chirho === bookNumChirho;
       });
-      if (book) {
-        selectBookChirho(book);
-        var ch = book.chapters_chirho.find(function (c) {
-          return c.chapter_chirho === chapterNum;
+      if (bookChirho) {
+        selectBookChirho(bookChirho);
+        var chChirho = bookChirho.chapters_chirho.find(function (cChirho) {
+          return cChirho.chapter_chirho === chapterNumChirho;
         });
-        if (ch) {
-          loadChapterChirho(book, ch);
+        if (chChirho) {
+          loadChapterChirho(bookChirho, chChirho);
         }
       }
     }
