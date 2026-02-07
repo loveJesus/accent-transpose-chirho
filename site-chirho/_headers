@@ -1,0 +1,11 @@
+# For God so loved the world that he gave his only begotten Son,
+# that whoever believes in him should not perish but have eternal life.
+
+/app_chirho.js
+  Cache-Control: public, max-age=60, must-revalidate
+
+/style_chirho.css
+  Cache-Control: public, max-age=60, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=60, must-revalidate

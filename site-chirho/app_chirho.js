@@ -31,7 +31,7 @@
     cancelRenderChirho();
     chapterTitleElChirho.textContent = "";
     chapterNavElChirho.textContent = "";
-    window.location.hash = "";
+    history.replaceState(null, "", window.location.pathname);
     document.querySelectorAll(".book-item-chirho").forEach(function (elChirho) {
       elChirho.classList.remove("active-chirho");
     });
@@ -144,7 +144,7 @@
     });
   }
 
-  function selectBookChirho(bookChirho) {
+  function selectBookChirho(bookChirho, autoLoadChirho) {
     document.querySelectorAll(".book-item-chirho").forEach(function (elChirho) {
       elChirho.classList.toggle(
         "active-chirho",
@@ -163,7 +163,7 @@
       chapterNavElChirho.appendChild(btnChirho);
     });
 
-    if (bookChirho.chapters_chirho.length > 0) {
+    if (autoLoadChirho !== false && bookChirho.chapters_chirho.length > 0) {
       loadChapterChirho(bookChirho, bookChirho.chapters_chirho[0]);
     }
 
@@ -175,7 +175,7 @@
     var genChirho = ++loadGenChirho;
 
     chapterTitleElChirho.textContent = bookChirho.book_name_chirho + " " + chChirho.chapter_chirho;
-    window.location.hash = bookChirho.book_num_chirho + ":" + chChirho.chapter_chirho;
+    history.replaceState(null, "", "#" + bookChirho.book_num_chirho + ":" + chChirho.chapter_chirho);
 
     document.querySelectorAll(".chapter-btn-chirho").forEach(function (btnChirho) {
       btnChirho.classList.toggle(
@@ -366,7 +366,7 @@
         return bChirho.book_num_chirho === bookNumChirho;
       });
       if (bookChirho) {
-        selectBookChirho(bookChirho);
+        selectBookChirho(bookChirho, false);
         var chChirho = bookChirho.chapters_chirho.find(function (cChirho) {
           return cChirho.chapter_chirho === chapterNumChirho;
         });
