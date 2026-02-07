@@ -63,8 +63,8 @@ cargo run -- export-pdf-chirho
 
 ## Data sources
 
-- **Solid Rock Hebrew Bible**: [github.com/loveJesus/solid-rock-hb](https://github.com/loveJesus/solid-rock-hb) (Git submodule at `solid-rock-hb/`)
-- **MapM**: JSON export of Mikra according to the Masorah (`MapM/MapM.json`)
+- **Solid Rock Hebrew Bible**: [github.com/jjmccollum/solid-rock-hb](https://github.com/jjmccollum/solid-rock-hb) (Git submodule at `solid-rock-hb/`)
+- **Mikra according to the Masora (MapM)**: [Hebrew Wikisource](https://he.wikisource.org/wiki/%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9:Dovi/%D7%9E%D7%A7%D7%A8%D7%90_%D7%A2%D7%9C_%D7%A4%D7%99_%D7%94%D7%9E%D7%A1%D7%95%D7%A8%D7%94) (JSON export at `MapM/MapM.json`)
 
 ## Architecture
 
