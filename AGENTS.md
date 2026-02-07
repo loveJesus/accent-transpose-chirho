@@ -193,6 +193,16 @@ The database tables are an **index for matching**, not a reconstruction of the t
 
 3. **Export formats**: cantillated TEI XML, cantillated USFM, plain text with cantillation
 
+### PDF Compilation
+
+When compiling the Typst source to PDF, you **must** pass the font path or the Hebrew text will render as tofu (missing glyph boxes):
+
+```bash
+typst compile --font-path site-chirho/fonts/ export-chirho/bible_chirho.typ export-chirho/bible_chirho.pdf
+```
+
+The KeterYG font lives at `site-chirho/fonts/KeterYG-Medium.ttf` (also available in `solid-rock-hb/tex/fonts/KeterYG/`).
+
 ### Important Notes
 
 - The SRHB uses a **different book order** than standard BHS — particularly the Writings section (Psalms=27, Proverbs=28, Job=29, etc.)
