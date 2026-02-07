@@ -4,40 +4,108 @@
 (function () {
   "use strict";
 
-  const DATA_DIR_CHIRHO = "data-chirho";
+  var DATA_DIR_CHIRHO = "data-chirho";
+  var PDF_URL_CHIRHO = "https://media-solid-rock-accents-chirho.bible.systems/bible_chirho.pdf";
 
-  let manifestChirho = null;
-  let currentBookChirho = null;
-  let currentChapterChirho = null;
+  var manifestChirho = null;
+  var currentBookChirho = null;
+  var currentChapterChirho = null;
 
-  const bookListEl = document.getElementById("book-list-chirho");
-  const chapterTitleEl = document.getElementById("chapter-title-chirho");
-  const chapterNavEl = document.getElementById("chapter-nav-chirho");
-  const textAreaEl = document.getElementById("text-area-chirho");
-  const tooltipEl = document.getElementById("tooltip-chirho");
-  const statsBarEl = document.getElementById("stats-bar-chirho");
-  const menuToggleEl = document.getElementById("menu-toggle-chirho");
-  const sidebarEl = document.getElementById("sidebar-chirho");
+  var bookListEl = document.getElementById("book-list-chirho");
+  var chapterTitleEl = document.getElementById("chapter-title-chirho");
+  var chapterNavEl = document.getElementById("chapter-nav-chirho");
+  var textAreaEl = document.getElementById("text-area-chirho");
+  var tooltipEl = document.getElementById("tooltip-chirho");
+  var statsBarEl = document.getElementById("stats-bar-chirho");
+  var menuToggleEl = document.getElementById("menu-toggle-chirho");
+  var sidebarEl = document.getElementById("sidebar-chirho");
+  var homeLinkEl = document.getElementById("home-link-chirho");
 
   // Mobile menu toggle
   menuToggleEl.addEventListener("click", function () {
     sidebarEl.classList.toggle("open-chirho");
   });
 
+  // Home link returns to front page
+  homeLinkEl.addEventListener("click", function (e) {
+    e.preventDefault();
+    currentBookChirho = null;
+    currentChapterChirho = null;
+    chapterTitleEl.textContent = "";
+    chapterNavEl.textContent = "";
+    window.location.hash = "";
+    document.querySelectorAll(".book-item-chirho").forEach(function (el) {
+      el.classList.remove("active-chirho");
+    });
+    showFrontPageChirho();
+  });
+
+  function showFrontPageChirho() {
+    textAreaEl.textContent = "";
+    var div = document.createElement("div");
+    div.className = "placeholder-chirho";
+
+    var p1 = document.createElement("p");
+    var strong1 = document.createElement("strong");
+    strong1.textContent = "Mikra according to the Masorah";
+    var strong2 = document.createElement("strong");
+    strong2.textContent = "Solid Rock Hebrew Bible";
+    p1.appendChild(document.createTextNode("Cantillation accents (te\u2019amim) from the "));
+    p1.appendChild(strong1);
+    p1.appendChild(document.createTextNode(" (MapM, based on the Aleppo Codex) transposed onto the "));
+    p1.appendChild(strong2);
+    p1.appendChild(document.createTextNode(" (based on the Leningrad Codex)."));
+    div.appendChild(p1);
+
+    var p2 = document.createElement("p");
+    p2.style.marginTop = "0.8rem";
+    p2.textContent = "The Solid Rock Hebrew Bible is a TEI XML critical edition of the Leningrad Codex. MapM preserves the cantillation tradition of the Aleppo Codex. This viewer shows each word color-coded by how well the two traditions align.";
+    div.appendChild(p2);
+
+    var p3 = document.createElement("p");
+    p3.style.marginTop = "0.8rem";
+    p3.textContent = "Select a book and chapter from the sidebar to begin.";
+    div.appendChild(p3);
+
+    var p4 = document.createElement("p");
+    p4.style.marginTop = "1.2rem";
+    var ghLink = document.createElement("a");
+    ghLink.href = "https://github.com/loveJesus/accent-transpose-chirho";
+    ghLink.target = "_blank";
+    ghLink.rel = "noopener";
+    ghLink.style.color = "#7c8cf8";
+    ghLink.textContent = "GitHub: loveJesus/accent-transpose-chirho";
+    p4.appendChild(ghLink);
+
+    var pdfSpan = document.createTextNode(" \u00b7 ");
+    p4.appendChild(pdfSpan);
+    var pdfLink = document.createElement("a");
+    pdfLink.href = PDF_URL_CHIRHO;
+    pdfLink.target = "_blank";
+    pdfLink.rel = "noopener";
+    pdfLink.style.color = "#7c8cf8";
+    pdfLink.textContent = "Download PDF";
+    p4.appendChild(pdfLink);
+
+    div.appendChild(p4);
+    textAreaEl.appendChild(div);
+  }
+
   async function loadManifestChirho() {
-    const resp = await fetch(DATA_DIR_CHIRHO + "/manifest_chirho.json");
+    var resp = await fetch(DATA_DIR_CHIRHO + "/manifest_chirho.json");
     manifestChirho = await resp.json();
     renderStatsChirho(manifestChirho.total_stats_chirho);
     renderBookListChirho();
 
     // Check URL hash for deep linking
-    if (window.location.hash) {
+    if (window.location.hash && window.location.hash.length > 1) {
       parseHashChirho();
+    } else {
+      showFrontPageChirho();
     }
   }
 
   function renderStatsChirho(stats) {
-    // Build stats bar using safe DOM methods
     statsBarEl.textContent = "";
     var strong = document.createElement("strong");
     strong.textContent = stats.total.toLocaleString();
@@ -84,7 +152,6 @@
   function selectBookChirho(book) {
     currentBookChirho = book;
 
-    // Highlight active book
     document.querySelectorAll(".book-item-chirho").forEach(function (el) {
       el.classList.toggle(
         "active-chirho",
@@ -92,7 +159,6 @@
       );
     });
 
-    // Build chapter navigation
     chapterNavEl.textContent = "";
     book.chapters_chirho.forEach(function (ch) {
       var btn = document.createElement("button");
@@ -104,12 +170,10 @@
       chapterNavEl.appendChild(btn);
     });
 
-    // Auto-load chapter 1
     if (book.chapters_chirho.length > 0) {
       loadChapterChirho(book, book.chapters_chirho[0]);
     }
 
-    // Close mobile menu
     sidebarEl.classList.remove("open-chirho");
   }
 
@@ -117,10 +181,8 @@
     currentChapterChirho = ch;
     chapterTitleEl.textContent = book.book_name_chirho + " " + ch.chapter_chirho;
 
-    // Update hash for deep linking
     window.location.hash = book.book_num_chirho + ":" + ch.chapter_chirho;
 
-    // Highlight active chapter button
     document.querySelectorAll(".chapter-btn-chirho").forEach(function (btn) {
       btn.classList.toggle(
         "active-chirho",
@@ -140,22 +202,17 @@
     renderChapterChirho(data);
   }
 
-  function statusClassChirho(status) {
-    switch (status) {
-      case "unmodified":
-      case "cantillated":
-        return "word-unmodified-chirho";
-      case "mismatch":
-        return "word-mismatch-chirho";
-      default:
-        return "word-not-present-chirho";
-    }
-  }
+  var STATUS_CLASSES_CHIRHO = {
+    unmodified: "word-unmodified-chirho",
+    cantillated: "word-unmodified-chirho",
+    mismatch: "word-mismatch-chirho",
+    not_present_in_mapm: "word-not-present-chirho"
+  };
 
   function renderChapterChirho(data) {
     textAreaEl.textContent = "";
 
-    // Chapter stats bar
+    // Chapter stats
     var statsDiv = document.createElement("div");
     statsDiv.className = "chapter-stats-chirho";
     statsDiv.textContent =
@@ -165,11 +222,13 @@
       data.stats_chirho.not_present + " missing";
     textAreaEl.appendChild(statsDiv);
 
+    // Use DocumentFragment for fast batch DOM insertion
+    var frag = document.createDocumentFragment();
     var container = document.createElement("div");
+    container.className = "verses-container-chirho";
     container.style.marginTop = "1rem";
 
     data.verses_chirho.forEach(function (verse) {
-      // Verse number
       var numSpan = document.createElement("span");
       numSpan.className = "verse-num-chirho";
       numSpan.textContent = verse.verse_chirho;
@@ -177,18 +236,16 @@
 
       verse.words_chirho.forEach(function (word) {
         var span = document.createElement("span");
-        span.className = "word-chirho " + statusClassChirho(word.status_chirho);
+        span.className = "word-chirho " + (STATUS_CLASSES_CHIRHO[word.status_chirho] || "word-not-present-chirho");
         span.textContent = word.result_chirho;
-        span.dataset.srOriginal = word.sr_original_chirho;
-        span.dataset.result = word.result_chirho;
-        span.dataset.status = word.status_chirho;
-        span.dataset.confidence = word.confidence_chirho;
-        span.dataset.notes = word.notes_chirho || "";
-
-        span.addEventListener("mouseenter", showTooltipChirho);
-        span.addEventListener("mouseleave", hideTooltipChirho);
-        span.addEventListener("click", toggleTooltipMobileChirho);
-
+        // Store data for tooltip via data attributes
+        span.dataset.o = word.sr_original_chirho;
+        span.dataset.r = word.result_chirho;
+        span.dataset.s = word.status_chirho;
+        span.dataset.c = word.confidence_chirho;
+        if (word.notes_chirho) {
+          span.dataset.n = word.notes_chirho;
+        }
         container.appendChild(document.createTextNode(" "));
         container.appendChild(span);
       });
@@ -196,28 +253,54 @@
       container.appendChild(document.createTextNode(" "));
     });
 
-    textAreaEl.appendChild(container);
+    frag.appendChild(container);
+
+    // Event delegation: single listener on container for all words
+    container.addEventListener("mouseenter", handleWordHoverChirho, true);
+    container.addEventListener("mouseleave", handleWordLeaveChirho, true);
+    container.addEventListener("click", handleWordClickChirho, true);
+
+    textAreaEl.appendChild(frag);
   }
 
-  function showTooltipChirho(e) {
-    var el = e.currentTarget;
-    var status = el.dataset.status;
-    var statusLabel =
-      status === "unmodified" || status === "cantillated"
-        ? "Matched"
-        : status === "mismatch"
-        ? "Mismatch"
-        : "Not in MapM";
+  function handleWordHoverChirho(e) {
+    if (e.target.classList.contains("word-chirho")) {
+      showTooltipChirho(e.target, e);
+    }
+  }
 
-    // Build tooltip using safe DOM methods
+  function handleWordLeaveChirho(e) {
+    if (e.target.classList.contains("word-chirho")) {
+      hideTooltipChirho();
+    }
+  }
+
+  function handleWordClickChirho(e) {
+    if (e.target.classList.contains("word-chirho")) {
+      if (tooltipEl.style.display === "block") {
+        hideTooltipChirho();
+      } else {
+        showTooltipChirho(e.target, e);
+      }
+    }
+  }
+
+  var STATUS_LABELS_CHIRHO = {
+    unmodified: "Matched",
+    cantillated: "Matched",
+    mismatch: "Mismatch",
+    not_present_in_mapm: "Not in MapM"
+  };
+
+  function showTooltipChirho(el, e) {
     tooltipEl.textContent = "";
 
-    appendTooltipRowChirho("Status", statusLabel + " (confidence: " + el.dataset.confidence + ")", false);
-    appendTooltipRowChirho("SR Original", el.dataset.srOriginal, true);
-    appendTooltipRowChirho("Result", el.dataset.result, true);
+    appendTooltipRowChirho("Status", (STATUS_LABELS_CHIRHO[el.dataset.s] || el.dataset.s) + " (confidence: " + el.dataset.c + ")", false);
+    appendTooltipRowChirho("SR Original", el.dataset.o, true);
+    appendTooltipRowChirho("Result", el.dataset.r, true);
 
-    if (el.dataset.notes) {
-      appendTooltipRowChirho("Notes", el.dataset.notes, false);
+    if (el.dataset.n) {
+      appendTooltipRowChirho("Notes", el.dataset.n, false);
     }
 
     tooltipEl.style.display = "block";
@@ -262,14 +345,6 @@
     tooltipEl.style.display = "none";
   }
 
-  function toggleTooltipMobileChirho(e) {
-    if (tooltipEl.style.display === "block") {
-      hideTooltipChirho();
-    } else {
-      showTooltipChirho(e);
-    }
-  }
-
   function parseHashChirho() {
     var hash = window.location.hash.slice(1);
     var parts = hash.split(":");
@@ -294,7 +369,11 @@
 
   window.addEventListener("hashchange", function () {
     if (manifestChirho) {
-      parseHashChirho();
+      if (!window.location.hash || window.location.hash === "#") {
+        showFrontPageChirho();
+      } else {
+        parseHashChirho();
+      }
     }
   });
 
