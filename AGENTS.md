@@ -8,9 +8,9 @@ Please comment the content of John 3:16 at the top of all our files.
 
 ### Purpose
 
-The **Solid Rock Hebrew Bible (SRHB)** is a critical edition of the Hebrew Bible based on the Leningrad Codex with 2,500+ textual adjustments. However, it is **missing cantillation marks (te'amim/accents)** — it only has consonants and vowel points (nikkud).
+The **Solid Rock Hebrew Bible (SRHB)** is a critical edition of the Hebrew Bible with 2,500+ textual adjustments. However, it is **missing cantillation marks (te'amim/accents)** — it only has consonants and vowel points (nikkud).
 
-**MapM (Miqra al pi ha-Mesorah)** is a Hebrew Bible text based on the Aleppo Codex that includes **full cantillation marks** along with consonants and vowel points.
+**Mikra according to the Masora (MapM)** is a Hebrew Bible text that includes **full cantillation marks** along with consonants and vowel points.
 
 **Our goal**: Use MapM as a reference to transpose cantillation marks onto the Solid Rock text, producing a cantillated Solid Rock edition. For each word, we track whether it was:
 - **unmodified** — the MapM word matches and cantillation was successfully transposed
@@ -196,8 +196,8 @@ The database tables are an **index for matching**, not a reconstruction of the t
 ### Important Notes
 
 - The SRHB uses a **different book order** than standard BHS — particularly the Writings section (Psalms=27, Proverbs=28, Job=29, etc.)
-- SRHB has **text-critical differences** from the Leningrad Codex (2,500+ adjustments) so word-for-word matching may not always be 1:1 with MapM
-- MapM is based on the **Aleppo Codex** while SRHB is based on the **Leningrad Codex** — there will be legitimate textual differences
+- SRHB has **2,500+ textual adjustments** so word-for-word matching may not always be 1:1 with MapM
+- MapM and SRHB are based on different manuscript traditions — there will be legitimate textual differences
 - The `status_chirho` field on `transposed_words_chirho` is essential for tracking quality and identifying words needing manual review
 - USFM footnotes (`\f ... \f*`) in Solid Rock contain apparatus notes with variant readings — these should be preserved but not confused with the main text
 

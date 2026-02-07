@@ -2,13 +2,13 @@
 
 # accent-transpose-chirho
 
-Transpose cantillation marks (te'amim) from the **Mikra according to the Masorah** (MapM, based on the Aleppo Codex) onto the **Solid Rock Hebrew Bible** (based on the Leningrad Codex).
+Cantillation accents from the **Mikra according to the Masora** (MapM) mapped onto the **Solid Rock Hebrew Bible**.
 
 ## What this does
 
-The **Solid Rock Hebrew Bible (SRHB)** is a TEI XML critical edition of the Leningrad Codex with 2,500+ textual adjustments. It has consonants and vowel points but is missing cantillation marks.
+The **Solid Rock Hebrew Bible (SRHB)** is a TEI XML critical edition with 2,500+ textual adjustments. It has consonants and vowel points but is missing cantillation marks.
 
-**MapM (Miqra al pi ha-Mesorah)** is a Hebrew Bible text based on the Aleppo Codex that includes full cantillation marks along with consonants and vowel points.
+**Mikra according to the Masora (MapM)** is a Hebrew Bible text that includes full cantillation marks along with consonants and vowel points.
 
 This tool matches each word in Solid Rock to its MapM counterpart by position and vowel pattern, then transfers the cantillation marks from MapM onto the Solid Rock text.
 
@@ -27,7 +27,7 @@ This tool matches each word in Solid Rock to its MapM counterpart by position an
 
 Browse the entire Hebrew Bible with color-coded cantillation status:
 - **Green** — matched, cantillation successfully transposed
-- **Orange** — text differs between Aleppo and Leningrad traditions
+- **Orange** — text differs between the two editions
 - **Red** — word not found in MapM
 
 ## PDF

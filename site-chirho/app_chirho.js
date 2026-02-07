@@ -58,14 +58,14 @@
     strong2Chirho.textContent = "Solid Rock Hebrew Bible";
     p1Chirho.appendChild(document.createTextNode("Cantillation accents (te\u2019amim) from the "));
     p1Chirho.appendChild(strong1Chirho);
-    p1Chirho.appendChild(document.createTextNode(" (MapM, based on the Aleppo Codex) transposed onto the "));
+    p1Chirho.appendChild(document.createTextNode(" (MapM) mapped onto the "));
     p1Chirho.appendChild(strong2Chirho);
-    p1Chirho.appendChild(document.createTextNode(" (based on the Leningrad Codex)."));
+    p1Chirho.appendChild(document.createTextNode("."));
     divChirho.appendChild(p1Chirho);
 
     var p2Chirho = document.createElement("p");
     p2Chirho.style.marginTop = "0.8rem";
-    p2Chirho.textContent = "The Solid Rock Hebrew Bible is a TEI XML critical edition of the Leningrad Codex. MapM preserves the cantillation tradition of the Aleppo Codex. This viewer shows each word color-coded by how well the two traditions align.";
+    p2Chirho.textContent = "The Solid Rock Hebrew Bible is a TEI XML critical edition. Mikra according to the Masora (MapM) preserves full cantillation marks. This viewer shows each word color-coded by how well the texts align.";
     divChirho.appendChild(p2Chirho);
 
     var p3Chirho = document.createElement("p");
