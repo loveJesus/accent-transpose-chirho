@@ -220,10 +220,8 @@ pub fn transpose_chirho(conn_chirho: &ConnectionChirho) -> ResultChirho<()> {
                     )?;
                     stats_unmodified_chirho += 1;
                 } else {
-                    // Position matches but text differs — still apply cantillation
-                    // but mark as cantillated (needs review)
-                    let result_word_chirho =
-                        apply_cantillation_chirho(sr_word_chirho, mapm_full_chirho);
+                    // Position matches but text differs — keep SR original without
+                    // cantillation (applying accents from a different word is misleading)
                     let note_chirho = format!(
                         "Text mismatch: SR='{}' MapM='{}'",
                         sr_comparison_chirho, mapm_comparison_chirho
@@ -234,7 +232,7 @@ pub fn transpose_chirho(conn_chirho: &ConnectionChirho) -> ResultChirho<()> {
                         rusqlite::params![
                             sr_id_chirho,
                             mapm_id_chirho,
-                            result_word_chirho,
+                            sr_word_chirho,
                             note_chirho,
                         ],
                     )?;
