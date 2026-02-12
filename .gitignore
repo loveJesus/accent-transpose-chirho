@@ -36,8 +36,7 @@ export-chirho/json-chirho/
 export-chirho/bible_chirho.pdf
 site-chirho/data-chirho/
 
-# Font copied from submodule (binary)
-site-chirho/fonts/
+# Large binaries (fonts are tracked since Ezra SIL is a project dependency)
 
 # Added by cargo
 

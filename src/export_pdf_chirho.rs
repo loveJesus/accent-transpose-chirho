@@ -11,7 +11,7 @@ use std::process::Command as CommandChirho;
 const JSON_DIR_CHIRHO: &str = "export-chirho/json-chirho";
 const TYPST_OUTPUT_CHIRHO: &str = "export-chirho/bible_chirho.typ";
 const PDF_OUTPUT_CHIRHO: &str = "export-chirho/bible_chirho.pdf";
-const FONT_PATH_CHIRHO: &str = "solid-rock-hb/tex/fonts/KeterYG/KeterYG-Medium.ttf";
+const FONT_DIR_CHIRHO: &str = "site-chirho/fonts";
 
 #[derive(DeserializeChirho)]
 struct ManifestChirho {
@@ -113,7 +113,7 @@ pub fn export_pdf_chirho() -> ResultChirho<()> {
     writeln!(typ_chirho)?;
     writeln!(typ_chirho, r#"#set document(title: "Hebrew Bible — Mikra according to the Masora Accents on Solid Rock", author: "accent-transpose-chirho")"#)?;
     writeln!(typ_chirho, r#"#set page(paper: "a4", margin: (top: 2cm, bottom: 2cm, left: 2cm, right: 2cm))"#)?;
-    writeln!(typ_chirho, r#"#set text(font: "Keter YG", size: 12pt, dir: rtl, lang: "he")"#)?;
+    writeln!(typ_chirho, r#"#set text(font: "Ezra SIL", size: 12pt, dir: rtl, lang: "he")"#)?;
     writeln!(typ_chirho)?;
     writeln!(typ_chirho, r##"#let unmodified-chirho = rgb("#2e7d32")"##)?;
     writeln!(typ_chirho, r##"#let mismatch-chirho = rgb("#e65100")"##)?;
@@ -196,9 +196,7 @@ pub fn export_pdf_chirho() -> ResultChirho<()> {
     println!("\n  Typst source written to: {}", TYPST_OUTPUT_CHIRHO);
 
     // Try to compile with Typst CLI
-    let font_dir_chirho = PathChirho::new(FONT_PATH_CHIRHO)
-        .parent()
-        .unwrap_or(PathChirho::new("."));
+    let font_dir_chirho = PathChirho::new(FONT_DIR_CHIRHO);
 
     println!("  Compiling PDF with typst...");
     let result_chirho = CommandChirho::new("typst")
