@@ -151,15 +151,17 @@
         <li>If the normalized forms match &rarr; <span class="color-matched-chirho">Matched</span> (confidence 1.0).
             Cantillation marks from the MapM word are applied to the Solid Rock word.</li>
         <li>If the normalized forms differ &rarr; <span class="color-mismatch-chirho">Mismatch</span> (confidence 0.5).
-            Cantillation is still applied but the word is flagged for review.</li>
+            The original Solid Rock word is displayed without cantillation, since applying
+            accents from a non-matching word would be misleading. These words await resolution
+            from proper manuscript sources.</li>
         <li>If no MapM word exists at that position &rarr; <span class="color-missing-chirho">Not in MapM</span> (confidence 0.0).
             The Solid Rock word is kept without cantillation.</li>
       </ul>
     </div>
 
     <div class="step-chirho">
-      <strong>4. Apply accents to each word</strong>
-      The accent application works character by character:
+      <strong>4. Apply accents to matched words</strong>
+      For words that match, the accent application works character by character:
       <ol style="margin-top:0.4rem;">
         <li>Build a "skeleton" of the MapM word: each non-cantillation character paired with
             any cantillation marks that follow it.</li>
@@ -179,7 +181,7 @@
         <td style="text-align:right;">92.8%</td>
       </tr>
       <tr>
-        <td><span class="color-mismatch-chirho">Mismatch</span> &mdash; text differs between editions</td>
+        <td><span class="color-mismatch-chirho">Mismatch</span> &mdash; text differs, shown without cantillation</td>
         <td style="text-align:right;">21,334</td>
         <td style="text-align:right;">7.0%</td>
       </tr>
@@ -221,8 +223,8 @@
     <ul>
       <li><strong>Status</strong> and confidence score</li>
       <li><strong>SR Original</strong> &mdash; the word as it appears in Solid Rock (without cantillation)</li>
-      <li><strong>Result</strong> &mdash; the word after cantillation was applied</li>
-      <li><strong>Notes</strong> &mdash; for mismatches, shows what SR and MapM texts looked like</li>
+      <li><strong>Result</strong> &mdash; for matched words, the cantillated result; for mismatches, the original SR word</li>
+      <li><strong>Notes</strong> &mdash; for mismatches, shows what both SR and MapM texts looked like at that position</li>
     </ul>
 
     <h2>Source code and data</h2>
