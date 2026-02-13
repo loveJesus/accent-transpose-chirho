@@ -85,19 +85,53 @@ body {
   line-height: 1.6;
 }
 
-.sidebar-pdf-chirho {
+/* Sidebar links (mobile only) */
+.sidebar-links-chirho {
+  display: none;
+  border-bottom: 1px solid #333;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-link-chirho {
   display: block;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
   color: #7c8cf8;
   text-decoration: none;
-  border-bottom: 1px solid #333;
-  margin-bottom: 0.5rem;
   transition: background 0.15s;
 }
 
-.sidebar-pdf-chirho:hover {
+.sidebar-link-chirho:hover {
   background: rgba(255, 255, 255, 0.08);
+}
+
+/* Top links bar (desktop) */
+.top-links-chirho {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.4rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-size: 0.8rem;
+}
+
+.top-links-chirho a {
+  color: #7c8cf8;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.15s;
+}
+
+.top-links-chirho a:hover {
+  color: #5b6bd4;
+}
+
+.gh-icon-chirho {
+  width: 14px;
+  height: 14px;
 }
 
 .book-list-chirho {
@@ -314,6 +348,14 @@ body {
   }
 
   .menu-toggle-chirho {
+    display: block;
+  }
+
+  .top-links-chirho {
+    display: none;
+  }
+
+  .sidebar-links-chirho {
     display: block;
   }
 
